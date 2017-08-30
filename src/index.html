@@ -7,8 +7,25 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 </head>
 <body>
-  <app-root></app-root>
+  <header> <nav class="top-nav red lighten-2"> <div class="container"> <div class="nav-wrapper"> </div> </div> </nav> </header>
+  <main>
+    <div class="container">
+      <div class="row">
+        <div class="col s12">
+          <h2 class="header red-text text-lighten-2">Cognito Auth Token</h2>
+          <p class="caption">Use the form bellow in order to receive your temporary auth tokens.</p>
+          <p class="caption">Do you have any doubts about how to get those infos? Check the <a href="http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools.html" target='_blank'>docs</a>.</p>
+          <app-root></app-root>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 </body>
 </html>

@@ -1,3 +1,81 @@
-<h1>
+<div class="row" *ngIf="!loading">
+  <form *ngIf="!tokens && !error" #form class="col s12">
+    <div class="row">
+      <div class="input-field col s6">
+        <input id="userPoolId" type="text" required name="userPoolId" [(ngModel)]="userPoolId" class="validate">
+        <label for="userPoolId">Cognito's pool id</label>
+      </div>
+      <div class="input-field col s6">
+        <input id="clientId" type="text" required name="clientId" [(ngModel)]="clientId" class="validate">
+        <label for="clientId">Cognito's client id</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+        <input id="login" type="text" required name="login" [(ngModel)]="login" class="validate">
+        <label for="login">Login</label>
+      </div>
+      <div class="input-field col s6">
+        <input id="password" type="password" required name="password" [(ngModel)]="password" class="validate">
+        <label for="password">Password</label>
+      </div>
+    </div>
+    <div class="center-align">
+      <button [disabled]="form.valid" (click)="getTokens()" [ngClass]="{'pulse': !this.tokens}" class="btn-large btn waves-effect waves-light" type="submit" name="action">
+        Go get my tokens!
+        <i class="material-icons right">send</i>
+      </button>
+    </div>
+  </form>
 
-</h1>
+  <div *ngIf="tokens || error">
+    <div *ngIf="tokens">
+      <div class="card green">
+        <div class="card-content white-text">
+          <span class="card-title">Yeeah, get here the tokens :)</span>
+
+          <p><b>Access Token:</b></p>
+          <p>{{ tokens.accessToken }}</p>
+          <br/>
+
+          <p><b>Id Token:</b></p>
+          <p>{{ tokens.idToken }}</p>
+          <br/>
+
+          <p><b>Refresh Token:</b></p>
+          <p>{{ tokens.refreshToken }}</p>
+          <br/>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="error">
+      <div class="card red">
+        <div class="card-content white-text">
+          <span class="card-title">Oops, there was an error :(</span>
+          <p>{{error}}</p>
+        </div>
+      </div>
+    </div>
+
+    <button (click)="this.tokens = undefined; this.error = undefined" class="pulse btn-large btn waves-effect waves-light" type="submit" name="action">
+      Back
+      <i class="material-icons left">arrow_back</i>
+    </button>
+  </div>
+</div>
+
+
+<div class="center-align" *ngIf="loading">
+  <div class="preloader-wrapper big active">
+    <div class="spinner-layer spinner-blue-only">
+      <div class="circle-clipper left">
+        <div class="circle"></div>
+      </div><div class="gap-patch">
+        <div class="circle"></div>
+      </div><div class="circle-clipper right">
+        <div class="circle"></div>
+      </div>
+    </div>
+  </div>
+</div>
